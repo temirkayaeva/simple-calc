@@ -21,7 +21,7 @@ for (let button of allButtons) {
         }
 
         if (e.target.innerHTML == '/' || e.target.innerHTML == '*' || e.target.innerHTML == '-' || e.target.innerHTML == '+') {
-            operator = numbers[numbers.length-1];
+            operator = numbers[numbers.length - 1];
             IndexOperator = numbers.length - 1;
             numbers.splice(numbers.length - 1, 1);
             console.log(numbers);
@@ -39,16 +39,16 @@ result.addEventListener('click', () => {
     let spliceNumbers = numbers.splice(IndexOperator, numbers.length - 1);
     secondNumber = +spliceNumbers.join('');
     console.log(secondNumber);
-    console.log(firstNumber+secondNumber);
+    console.log(firstNumber + secondNumber);
     let finalResult = defineOperation(operator, firstNumber, secondNumber);
     document.querySelector('.result').innerHTML = finalResult;
 });
 
 function defineOperation(operator, firstNumber, secondNumber) {
     if (operator == '*') return firstNumber * secondNumber;
-    if (operator == '/') return secondNumber / firstNumber;
+    if (operator == '/') return firstNumber / secondNumber;
     if (operator == '+') return firstNumber + secondNumber;
-    if (operator == '-') return secondNumber - firstNumber;
+    if (operator == '-') return firstNumber - secondNumber;
 }
 
 let clear = document.querySelector('.clear');
