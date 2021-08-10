@@ -2,9 +2,10 @@
 
 let allButtons = document.querySelectorAll('button');
 let numbers = [];
-let firstnumber;
+let firstNumber;
 let secondNumber;
 let operator;
+let IndexOperator;
 document.querySelectorAll('.operation').forEach((item) => {
     item.disabled = true;
 });
@@ -18,42 +19,47 @@ for (let button of allButtons) {
             });
             document.querySelector('.ready').disabled = false;
         }
-        // console.log(numbers);
+
         if (e.target.innerHTML == '/' || e.target.innerHTML == '*' || e.target.innerHTML == '-' || e.target.innerHTML == '+') {
-            operator = numbers[numbers.length - 1];
-            secondNumber = +numbers[numbers.length - 2];
-            console.log(secondNumber);
-        } else {
-            firstnumber = +numbers[numbers.length - 1];
-            console.log(firstnumber);
+            operator = numbers[numbers.length-1];
+            IndexOperator = numbers.length - 1;
+            numbers.splice(numbers.length - 1, 1);
+            console.log(numbers);
+            firstNumber = +numbers.join('');
+            // secondNumber = +numbers[numbers.length - 2];
+            console.log(firstNumber);
         }
+        console.log(numbers);
     });
 
 }
 let result = document.querySelector('.ready');
 
 result.addEventListener('click', () => {
-    let finalResult = defineOperation(operator, firstnumber, secondNumber);
+    let spliceNumbers = numbers.splice(IndexOperator, numbers.length - 1);
+    secondNumber = +spliceNumbers.join('');
+    console.log(secondNumber);
+    console.log(firstNumber+secondNumber);
+    let finalResult = defineOperation(operator, firstNumber, secondNumber);
     document.querySelector('.result').innerHTML = finalResult;
 });
+
+function defineOperation(operator, firstNumber, secondNumber) {
+    if (operator == '*') return firstNumber * secondNumber;
+    if (operator == '/') return secondNumber / firstNumber;
+    if (operator == '+') return firstNumber + secondNumber;
+    if (operator == '-') return secondNumber - firstNumber;
+}
 
 let clear = document.querySelector('.clear');
 
 clear.addEventListener('click', () => {
     numbers = [];
     secondNumber = '';
-    firstnumber = '';
+    firstNumber = '';
     document.querySelector('.result').innerHTML = 'Вывод результата';
     document.querySelectorAll('.operation').forEach((item) => {
         item.disabled = true;
     });
     document.querySelector('.ready').disabled = true;
 });
-
-
-function defineOperation(operator, firstnumber, secondNumber) {
-    if (operator == '*') return firstnumber * secondNumber;
-    if (operator == '/') return secondNumber / firstnumber;
-    if (operator == '+') return firstnumber + secondNumber;
-    if (operator == '-') return secondNumber - firstnumber;
-}
