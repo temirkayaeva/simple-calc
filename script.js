@@ -12,7 +12,7 @@ document.querySelectorAll('.operation').forEach((item) => {
 document.querySelector('.ready').disabled = true;
 for (let button of allButtons) {
     button.addEventListener('click', function (e) {
-        numbers.push(e.target.innerHTML);
+        numbers.push(this.value);
         if (numbers.length) {
             document.querySelectorAll('.operation').forEach((item) => {
                 item.disabled = false;
@@ -20,7 +20,7 @@ for (let button of allButtons) {
             document.querySelector('.ready').disabled = false;
         }
 
-        if (e.target.innerHTML == '/' || e.target.innerHTML == '*' || e.target.innerHTML == '-' || e.target.innerHTML == '+') {
+        if (this.value == '/' || this.value == '*' || this.value == '-' || this.value == '+') {
             operator = numbers[numbers.length - 1];
             IndexOperator = numbers.length - 1;
             numbers.splice(numbers.length - 1, 1);
@@ -38,8 +38,6 @@ let result = document.querySelector('.ready');
 result.addEventListener('click', () => {
     let spliceNumbers = numbers.splice(IndexOperator, numbers.length - 1);
     secondNumber = +spliceNumbers.join('');
-    console.log(secondNumber);
-    console.log(firstNumber + secondNumber);
     let finalResult = defineOperation(operator, firstNumber, secondNumber);
     document.querySelector('.result').innerHTML = finalResult;
 });

@@ -16,7 +16,7 @@ body {
 .result {
     margin: 10px auto 0 auto;
     width: 500px;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(241, 241, 241);
     height: 50px;
     display: flex;
     align-items: center;
@@ -34,7 +34,18 @@ button {
 }
 
 button:active {
-    border: 2px solid gray;
+    border: 3px solid #dddddd;
+    box-shadow: 2px 2px 0px #dddddd;
+}
+
+.numbers button:active {
+    background: linear-gradient(to top, #1A6DFF, #C822FF);
+    color: #fff;
+
+}
+
+button:hover {
+    /* background: linear-gradient(to top, #720082, #7e0092); */
 }
 
 .buttons {
@@ -45,6 +56,12 @@ button:active {
 .operations {
     display: flex;
     justify-content: space-evenly;
+}
+
+.operation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .operations button {
@@ -59,12 +76,12 @@ button:active {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin: 5px auto 0 auto;
+    margin: 30px auto 0 auto;
 }
 
 .numbers button {
     font-size: 20px;
-    margin: 4px;
+    margin: 5px;
     width: 70px;
     height: 70px;
 }
@@ -79,6 +96,11 @@ input {
     display: block;
     width: 150px;
     height: 50px;
+}
+
+input:active {
+    border: 2px solid #dddddd;
+    box-shadow: 2px 2px 0px #dddddd;
 }
 
 .input-wrapper {
