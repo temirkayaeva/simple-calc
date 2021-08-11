@@ -45,7 +45,7 @@ button:active {
 }
 
 button:hover {
-    /* background: linear-gradient(to top, #720082, #7e0092); */
+    background: #dddddd;
 }
 
 .buttons {

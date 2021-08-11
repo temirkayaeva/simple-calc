@@ -6,13 +6,17 @@ let firstNumber;
 let secondNumber;
 let operator;
 let IndexOperator;
+let out = '';
+
 document.querySelectorAll('.operation').forEach((item) => {
-    item.disabled = true;
+    disabledButtons(item);
 });
+
 document.querySelector('.ready').disabled = true;
 for (let button of allButtons) {
     button.addEventListener('click', function (e) {
         numbers.push(this.value);
+
         if (numbers.length) {
             document.querySelectorAll('.operation').forEach((item) => {
                 item.disabled = false;
@@ -24,12 +28,16 @@ for (let button of allButtons) {
             operator = numbers[numbers.length - 1];
             IndexOperator = numbers.length - 1;
             numbers.splice(numbers.length - 1, 1);
-            console.log(numbers);
+            // console.log(numbers);
             firstNumber = +numbers.join('');
+            out = '';
             // secondNumber = +numbers[numbers.length - 2];
             console.log(firstNumber);
+        } else {
+            out += this.value;
+            document.querySelector('.result').innerHTML = out;
         }
-        console.log(numbers);
+        // console.log(numbers);
     });
 
 }
@@ -57,7 +65,13 @@ clear.addEventListener('click', () => {
     firstNumber = '';
     document.querySelector('.result').innerHTML = 'Вывод результата';
     document.querySelectorAll('.operation').forEach((item) => {
-        item.disabled = true;
+        disabledButtons(item);
     });
-    document.querySelector('.ready').disabled = true;
+    disabledButtons(document.querySelector('.ready'));
+    out = '';
 });
+
+function disabledButtons (obj) {
+    // console.log('work');
+    return obj.disabled = true;
+}
