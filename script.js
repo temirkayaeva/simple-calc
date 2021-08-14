@@ -32,7 +32,7 @@ for (let button of allButtons) {
             firstNumber = +numbers.join('');
             out = '';
             // secondNumber = +numbers[numbers.length - 2];
-            console.log(firstNumber);
+            // console.log(firstNumber);
         } else {
             out += this.value;
             document.querySelector('.result').innerHTML = out;
@@ -48,6 +48,10 @@ result.addEventListener('click', () => {
     secondNumber = +spliceNumbers.join('');
     let finalResult = defineOperation(operator, firstNumber, secondNumber);
     document.querySelector('.result').innerHTML = finalResult;
+    numbers = [];
+    numbers.push(finalResult);
+    // firstNumber = finalResult;
+    // console.log(firstNumber);
 });
 
 function defineOperation(operator, firstNumber, secondNumber) {
@@ -71,7 +75,7 @@ clear.addEventListener('click', () => {
     out = '';
 });
 
-function disabledButtons (obj) {
+function disabledButtons(obj) {
     // console.log('work');
     return obj.disabled = true;
 }
